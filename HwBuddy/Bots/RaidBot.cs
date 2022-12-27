@@ -44,7 +44,7 @@ namespace HwBuddy.Bots
 
             if (Checkout() || Donate() || Level())
             {
-                ImageService.DoMouseClick();
+                ImageService.PressEsc();
                 return;
             }
         }

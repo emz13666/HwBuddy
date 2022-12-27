@@ -20,9 +20,36 @@ namespace HwBuddy.Common
         private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
         private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+
+        public const int KEYEVENTF_KEYDOWN = 0x0000; // New definition
+        public const int KEYEVENTF_EXTENDEDKEY = 0x0001; //Key down flag
+        public const int KEYEVENTF_KEYUP = 0x0002; //Key up flag
+        public const int VK_ESCAPE = 0x1B; // Escape key code
+       
+        public static void PressF1()
+        {
+            keybd_event((int)Keys.F1, 0, KEYEVENTF_KEYDOWN, 0);
+            keybd_event((int)Keys.F1, 0, KEYEVENTF_KEYUP, 0);
+        }
+        public static void PressEsc()
+        {
+            // Hold Control down and press A
+            /*
+            keybd_event(VK_LCONTROL, 0, KEYEVENTF_KEYDOWN, 0);
+            keybd_event(A, 0, KEYEVENTF_KEYDOWN, 0);
+            keybd_event(A, 0, KEYEVENTF_KEYUP, 0);
+            keybd_event(VK_LCONTROL, 0, KEYEVENTF_KEYUP, 0);
+           */
+            
+            keybd_event(VK_ESCAPE, 0, KEYEVENTF_KEYDOWN, 0);
+            keybd_event(VK_ESCAPE, 0, KEYEVENTF_KEYUP, 0);
+        }
+        
         public static Bitmap CaptureScreen()
         {
-            return CaptureScreen(1050, 650, MainForm.Position.X, MainForm.Position.Y);            
+            return CaptureScreen(1260, 950, MainForm.Position.X, MainForm.Position.Y);            
         }
 
         public static Bitmap CaptureScreen(int width, int height, int X, int Y)
@@ -32,7 +59,7 @@ namespace HwBuddy.Common
             using (var gr = Graphics.FromImage(bmp))
                 try
                 {
-                    gr.CopyFromScreen(X, Y, 0, 0, new Size(1050, 660), CopyPixelOperation.SourceCopy);
+                    gr.CopyFromScreen(X, Y, 0, 0, new Size(width, height), CopyPixelOperation.SourceCopy);
                     return bmp;
                 }
                 catch (Exception ex)

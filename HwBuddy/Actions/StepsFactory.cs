@@ -27,12 +27,20 @@ namespace HwBuddy.Actions
             if (dungeonSteps == null)
             {
                 dungeonSteps = new List<AbstractStep>();
-                dungeonSteps.Add(new DungeonBattleReadyStep());
+                dungeonSteps.Add(new Step(Images.DUNGEON_NEW_CARDS));
+                dungeonSteps.Add(new Step(Images.DUNGEON_CARDS_COLLECT));
+                dungeonSteps.Add(new Step(Images.DUNGEON_CARDS_CLOSE,0.95f));
+                dungeonSteps.Add(new Step(Images.DUNGEON_TO_BATTLE));
                 dungeonSteps.Add(new DungeonUseCardStep());
-                dungeonSteps.Add(new DungeonDoorStep());
+                dungeonSteps.Add(new Step(Images.DUNGEON_ATTACK_MIXFIGHT, 0.95f, 0, 30));
+                dungeonSteps.Add(new Step(Images.DUNGEON_ATTACK_WATER, 0.95f, 0, 30));
+                dungeonSteps.Add(new Step(Images.DUNGEON_ATTACK_EARTH, 0.95f, 0, 30));
+                dungeonSteps.Add(new Step(Images.DUNGEON_ATTACK_FIRE, 0.95f, 0, 30));
                 dungeonSteps.Add(new InBattleStep());
                 dungeonSteps.Add(new DungeonAttackStep());
                 dungeonSteps.Add(new DungeonVictoryStep());
+                dungeonSteps.Add(new Step(Images.DUNGEON_ACTIVATION));
+                dungeonSteps.Add(new Step(Images.EVENTS_TAKE_DAILY_BUTTON));
             }
             return dungeonSteps;
         }
@@ -42,12 +50,12 @@ namespace HwBuddy.Actions
             if (toeSteps == null)
             {
                 toeSteps = new List<AbstractStep>();
-                toeSteps.Add(new ToeRaidStep());
-                toeSteps.Add(new ToeCollectStep());
-                toeSteps.Add(new ToeCloseStep());
-                toeSteps.Add(new ToeChestStep());
-                toeSteps.Add(new ToeCollectAllStep());
-                toeSteps.Add(new ToeCollect2Step());
+                toeSteps.Add(new Step(Images.TOE_RAID));
+                toeSteps.Add(new Step(Images.TOE_COLLECT));
+                toeSteps.Add(new Step(Images.TOE_CLOSE, 0.9f,152));
+                toeSteps.Add(new Step(Images.TOE_CHEST, 0.9f, -20, 30));
+                toeSteps.Add(new Step(Images.TOE_COLLECT_ALL));
+                toeSteps.Add(new Step(Images.TOE_COLLECT_2));
             }
             return toeSteps;
         }

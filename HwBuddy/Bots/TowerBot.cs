@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
+
 namespace HwBuddy.Bots
 {
     public class TowerBot : BaseBot
@@ -24,62 +25,107 @@ namespace HwBuddy.Bots
         int Attackc = 0;
         int CanAttackManuallyc = 0;
         int OkButtonc = 0;
-
+        int FinalChest = 0;
         public TowerBot() : base(null)
         {
         }
 
         public override void Step()
         {
+            Random rnd = new Random();
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            if (ToggleButton())
+            if (ImageService.CursorToImage(Images.TOWER_MOMENT,0.75f))
+            {
+                ImageService.DoMouseClick();
+                return;
+            }
+
+            if (ImageService.CursorToImage(Images.TOWER_CHOOSE15,0,135))
+            {
+                ImageService.DoMouseClick();
+                return;
+            }
+            if (ImageService.CursorToImage(Images.TOGGLE_BUTTON))
             {
                 ImageService.DoMouseClick();
                 ToggleButtonc++;
                 return;
             }
-            if (CanAttack())
+            if (ImageService.CursorToImage(Images.TOWER_DOOR))
             {
                 ImageService.DoMouseClick();
                 CanAttackc++;
                 return;
             }
-            if (Attack())
+            if (ImageService.CursorToImage(Images.TOWER_ATTACK))
             {
                 ImageService.DoMouseClick();
                 Attackc++;
                 return;
             }
-            if (Victory())
+            if (ImageService.CheckImagePresent(Images.VICTORY,0.75f))
             {
-                Victoryc++;
-                if (OkButton())
-                {
-                    ImageService.DoMouseClick();
-                    OkButtonc++;
-                    return;
-                }
+               Victoryc++;
+               ImageService.PressEsc();
+               return;
             }
-            if (NextFloor())
+            if (ImageService.CursorToImage(Images.TOWER_NEXT, 0.75f))
             {
                 ImageService.DoMouseClick();
                 NextFloorc++;
                 return;
             }
-            if (Chest())
+            if (ImageService.CursorToImage(Images.TOWER_CHEST) || ImageService.CursorToImage(Images.TOWER_CHEST_BIG))
             {
                 ImageService.DoMouseClick();
                 Chestc++;
                 return;
             }
-            if (MoveOn())
+
+            if ((FinalChest < 0) && ImageService.CursorToImage(Images.TOWER_HALL))
+            {
+                ImageService.DoMouseClick();
+                System.Threading.Thread.Sleep(200);
+                if (ImageService.CursorToImage(Images.POST_COLLECT_ALL))
+                {
+                    ImageService.DoMouseClick();
+                }
+                System.Threading.Thread.Sleep(500);
+                ImageService.PressEsc();
+                System.Threading.Thread.Sleep(500);
+                ImageService.PressEsc();
+                ImageService.PressF1();
+                return;
+            }
+
+            if ((FinalChest > 0) && ImageService.CursorToImage(Images.TOWER_SKULLS_COLLECT))
+            {
+                ImageService.DoMouseClick();
+                System.Threading.Thread.Sleep(200);
+                if (ImageService.CursorToImage(Images.TOWER_CHANGE_SKILLS))
+                {
+                    ImageService.DoMouseClick();
+                }
+
+                FinalChest = -1;
+                return;  
+            }
+            
+            if ((FinalChest == 0) && ImageService.CursorToImage(Images.TOWER_CHEST_FINAL))
+            {
+                ImageService.DoMouseClick();
+                FinalChest++;
+                return;
+            }
+            
+            if (ImageService.CursorToImage(Images.TOWER_CHEST_MOVEON))
             {
                 ImageService.DoMouseClick();
                 MoveOnc++;
                 return;
             }
-            if (OpenChest())
+            if (ImageService.CursorToImage(Images.TOWER_CHEST_OPEN, 0.9f, -300+300*rnd.Next(3), 100))
             {
                 ImageService.DoMouseClick();
                 OpenChestc++;
@@ -91,95 +137,38 @@ namespace HwBuddy.Bots
                 Shrinec++;
                 return;
             }
-            if (Powerups())
+            if (ImageService.CheckImagePresent(Images.TOWER_POWERUP_SCREEN))
             {
-                ImageService.DoMouseClick();
+                ImageService.PressEsc();
                 Powerupsc++;
                 return;
             }
-            if (CanRaid())
+            if (ImageService.CursorToImage(Images.TOWER_RAID,0.85f,50,0))
             {
                 ImageService.DoMouseClick();
                 CanRaidc++;
                 return;
             }
-            if (CanAttackManually())
+            if (ImageService.CursorToImage(Images.DUNGEON_ATTACK_BUTTON))
             {
                 ImageService.DoMouseClick();
                 CanAttackc++;
                 return;
             }
+            if ((FinalChest > 0) && ImageService.CheckImagePresent(Images.TOWER_LAST_CHEST))
+            {
+                ImageService.PressEsc();
+                return;
+            }
             sw.Stop();
         }
+        
 
-        bool CanAttackManually()
-        {
-            return ImageService.CursorToImage(Images.DUNGEON_ATTACK_BUTTON);
-        }
-
-        bool OkButton()
-        {
-            return ImageService.CursorToImage(Images.OK_BUTTON);
-        }
-
-        bool Victory()
-        {
-            return ImageService.CheckImagePresent(Images.VICTORY);
-        }
-
-        bool ToggleButton()
-        {
-            return ImageService.CursorToImage(Images.TOGGLE_BUTTON);
-        }
-
-        bool InBattle()
-        {
-            return ImageService.CheckImagePresent(Images.PAUSE_BUTTON);
-        }
-
-        bool Attack()
-        {
-            return ImageService.CursorToImage(Images.TOWER_ATTACK);
-        }
-
-        bool MoveOn()
-        {
-            return ImageService.CursorToImage(Images.TOWER_CHEST_MOVEON);
-        }
-
-        bool OpenChest()
-        {
-            return ImageService.CursorToImage(Images.TOWER_CHEST_OPEN, 0.9f);
-        }
-
-        bool Chest()
-        {
-            return ImageService.CursorToImage(Images.TOWER_CHEST) || ImageService.CursorToImage(Images.TOWER_CHEST_BIG);
-        }
-
-        bool NextFloor()
-        {
-            return ImageService.CursorToImage(Images.TOWER_NEXT);
-        }
-
-        bool Powerups()
-        {
-            return ImageService.CheckImagePresent(Images.TOWER_POWERUP_SCREEN) && ImageService.CursorToImage(Images.TOWER_POWERUP_CLOSE);
-        }
+        
 
         bool Shrine()
         {
             return  !ImageService.CheckImagePresent(Images.TOWER_NEXT) && (ImageService.CursorToImage(Images.TOWER_SHRINE) || ImageService.CursorToImage(Images.TOWER_SHRINE_2));
-        }
-
-        bool CanRaid()
-        {
-            return ImageService.CursorToImage(Images.TOWER_RAID);
-        }
-
-        bool CanAttack()
-        {
-            return ImageService.CursorToImage(Images.TOWER_DOOR, 0.8f);
         }
     }
 }

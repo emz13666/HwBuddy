@@ -1,8 +1,14 @@
 ﻿
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
 namespace HwBuddy
 {
     partial class MainForm
     {
+        
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -79,8 +85,7 @@ namespace HwBuddy
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(908, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Размести окно бота так, чтобы игра была ровно под ним. Войди в подземелье или баш" +
-    "ню и нажми соответствующую кнопку. Чтобы остановить бота, нажми esc.";
+            this.label1.Text = "Размести окно бота над игрой. Войди в локацию и нажми кнопку. Чтобы остановить бота, нажми F1";
             // 
             // raidButton
             // 
@@ -171,7 +176,7 @@ namespace HwBuddy
             this.questsButton.Name = "questsButton";
             this.questsButton.Size = new System.Drawing.Size(62, 23);
             this.questsButton.TabIndex = 13;
-            this.questsButton.Text = "Задания";
+            this.questsButton.Text = "OnTop";
             this.questsButton.UseVisualStyleBackColor = true;
             this.questsButton.Click += new System.EventHandler(this.questsButton_Click);
             // 
@@ -189,7 +194,7 @@ namespace HwBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 86);
+            this.ClientSize = new System.Drawing.Size(1100, 55);
             this.Controls.Add(this.postButton);
             this.Controls.Add(this.questsButton);
             this.Controls.Add(this.zapredButton);
@@ -205,12 +210,25 @@ namespace HwBuddy
             this.Controls.Add(this.towerButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "HW Buddy v1.0.3.0";
+            this.Text = "HW Buddy v1.0.3.1";
             this.TopMost = true;
             this.Move += new System.EventHandler(this.MainForm_Move);
+            this.FormClosing += new FormClosingEventHandler(this.MainForm_Close);
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            
+            //Загрузка координат формы из LocationMainForm.ini (C)EMZ
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            if (File.Exists(@"LocationMainForm.ini"))
+            {
+                String[] PositionMainForm = System.IO.File.ReadAllLines(@"LocationMainForm.ini");
+                this.Location = new System.Drawing.Point(int.Parse(PositionMainForm[0]), int.Parse(PositionMainForm[1]));
+            }
+            else
+            {
+                //this.Location = new System.Drawing.Point(450, 135); //для 80%
+                this.Location = new System.Drawing.Point(325, 50); //для 100%
+            }
         }
 
         #endregion

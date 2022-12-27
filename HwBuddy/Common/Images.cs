@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace HwBuddy.Common
@@ -30,7 +31,12 @@ namespace HwBuddy.Common
         public static Image<Bgr, byte> DUNGEON_TO_BATTLE = new Image<Bgr, byte>("Images/dungeon-to-battle.png");
         public static Image<Bgr, byte> DUNGEON_USE_CARD = new Image<Bgr, byte>("Images/dungeon-use-card.png");
         public static Image<Bgr, byte> DUNGEON_ATTACK_MIXFIGHT = new Image<Bgr, byte>("Images/dungeon-attack-mixfight.png");
+        public static Image<Bgr, byte> DUNGEON_ATTACK_WATER = new Image<Bgr, byte>("Images/dungeon-attack-water.png");
+        public static Image<Bgr, byte> DUNGEON_ATTACK_FIRE = new Image<Bgr, byte>("Images/dungeon-attack-fire.png");
+        public static Image<Bgr, byte> DUNGEON_ATTACK_EARTH = new Image<Bgr, byte>("Images/dungeon-attack-earth.png");
         public static Image<Bgr, byte> DUNGEON_ATTACK_BUTTON = new Image<Bgr, byte>("Images/dungeon-attack-button.png");
+        public static Image<Bgr, byte> DUNGEON_CARDS_CLOSE = new Image<Bgr, byte>("Images/dungeon-cards-close.png");
+        public static Image<Bgr, byte> DUNGEON_ACTIVATION = new Image<Bgr, byte>("Images/dungeon-activation.png");
 
         public static Image<Bgr, byte> TOWER_DOOR = new Image<Bgr, byte>("Images/tower-door.png");
         public static Image<Bgr, byte> TOWER_HALL = new Image<Bgr, byte>("Images/tower-hall.png");
@@ -43,9 +49,11 @@ namespace HwBuddy.Common
         public static Image<Bgr, byte> TOWER_NEXT = new Image<Bgr, byte>("Images/tower-next-right.png");
         public static Image<Bgr, byte> TOWER_CHEST = new Image<Bgr, byte>("Images/tower-chest.png");
         public static Image<Bgr, byte> TOWER_CHEST_BIG = new Image<Bgr, byte>("Images/tower-chest-big.png");
+        public static Image<Bgr, byte> TOWER_CHEST_FINAL = new Image<Bgr, byte>("Images/tower-chest-final.png");
         public static Image<Bgr, byte> TOWER_CHEST_OPEN = new Image<Bgr, byte>("Images/tower-chest-open.png");
         public static Image<Bgr, byte> TOWER_CHEST_MOVEON = new Image<Bgr, byte>("Images/tower-chest-moveon.png");
         public static Image<Bgr, byte> TOWER_POWERUP_SCREEN = new Image<Bgr, byte>("Images/tower-powerup-screen.png");
+        public static Image<Bgr, byte> TOWER_LAST_CHEST = new Image<Bgr, byte>("Images/tower-last-chest.png");
         public static Image<Bgr, byte> TOWER_POWERUP_1 = new Image<Bgr, byte>("Images/tower-powerup-1.png");
         public static Image<Bgr, byte> TOWER_POWERUP_3 = new Image<Bgr, byte>("Images/tower-powerup-3.png");
         public static Image<Bgr, byte> TOWER_POWERUP_6 = new Image<Bgr, byte>("Images/tower-powerup-6.png");
@@ -54,8 +62,12 @@ namespace HwBuddy.Common
         public static Image<Bgr, byte> TOWER_POWERUP_20 = new Image<Bgr, byte>("Images/tower-powerup-20.png");
         public static Image<Bgr, byte> TOWER_POWERUP_40 = new Image<Bgr, byte>("Images/tower-powerup-40.png");
         public static Image<Bgr, byte> TOWER_SKULLS_ENDED = new Image<Bgr, byte>("Images/tower-skulls-ended.png");
+        public static Image<Bgr, byte> TOWER_SKULLS_COLLECT = new Image<Bgr, byte>("Images/tower-skulls-collect.png");
+        public static Image<Bgr, byte> TOWER_CHANGE_SKILLS = new Image<Bgr, byte>("Images/tower-change-skills.png");
         public static Image<Bgr, byte> TOWER_BAD_POWERUP = new Image<Bgr, byte>("Images/tower-bad-powerup.png");
         public static Image<Bgr, byte> SKULLS_OK_BUTTON = new Image<Bgr, byte>("Images/skulls-ok-button.png");
+        public static Image<Bgr, byte> TOWER_MOMENT = new Image<Bgr, byte>("Images/tower-moment.png");
+        public static Image<Bgr, byte> TOWER_CHOOSE15 = new Image<Bgr, byte>("Images/tower-choose15.png");
 
         public static Image<Bgr, byte> TOE_RAID = new Image<Bgr, byte>("Images/toe-raid.png");
         public static Image<Bgr, byte> TOE_CLOSE = new Image<Bgr, byte>("Images/toe-close.png");

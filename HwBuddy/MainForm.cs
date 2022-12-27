@@ -36,10 +36,11 @@ namespace HwBuddy
             // Modifier keys codes: Alt = 1, Ctrl = 2, Shift = 4, Win = 8
             // Compute the addition of each combination of the keys you want to be pressed
             // ALT+CTRL = 1 + 2 = 3 , CTRL+SHIFT = 2 + 4 = 6...
-            RegisterHotKey(this.Handle, ESC_HOTKEY_ID, 0, (int)Keys.Escape);
+            RegisterHotKey(this.Handle, ESC_HOTKEY_ID, 0, (int)Keys.F1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
+            //TopMost = false;
             //DebugForm debugForm = new DebugForm();
             //debugForm.Show();
         }
@@ -110,8 +111,10 @@ namespace HwBuddy
 
         private void questsButton_Click(object sender, EventArgs e)
         {
-            currentBot = BotFactory.GetQuestsBot();
-            StartBot();
+            //currentBot = BotFactory.GetQuestsBot();
+            //StartBot();
+            //this.Text = Convert.ToString(this.Location.X) + ' ' + Convert.ToString(this.Location.Y);
+            TopMost = !TopMost;
         }
         private void postButton_Click(object sender, EventArgs e)
         {
@@ -134,7 +137,14 @@ namespace HwBuddy
         {
             Position = new Point(Location.X, Location.Y + Height);
         }
-
+        private void MainForm_Close(object sender, EventArgs e)
+        {
+            var PositionMainForm = new List<string>();
+            PositionMainForm.Add(Convert.ToString(Location.X));
+            PositionMainForm.Add(Convert.ToString(Location.Y));
+            System.IO.File.WriteAllLines(@"LocationMainForm.ini", PositionMainForm);
+            PositionMainForm.Clear();
+        }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://vk.com/hwbuddy") { UseShellExecute = true });
