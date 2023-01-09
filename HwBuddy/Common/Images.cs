@@ -19,6 +19,7 @@ namespace HwBuddy.Common
         public static Image<Bgr, byte> TOGGLE_BUTTON = new Image<Bgr, byte>("Images/toggle-button.png");
         public static Image<Bgr, byte> CLOSE_BUTTON = new Image<Bgr, byte>("Images/close-button.png");
         public static Image<Bgr, byte> RAID_BUTTON = new Image<Bgr, byte>("Images/raid.png");
+        public static Image<Bgr, byte> RAID_NO_ENERGY = new Image<Bgr, byte>("Images/raid-no-energy.png");
         public static Image<Bgr, byte> TAKE_ALL_BUTTON = new Image<Bgr, byte>("Images/takeall.png");
         public static Image<Bgr, byte> CHECKOUT = new Image<Bgr, byte>("Images/checkout.png");
         public static Image<Bgr, byte> DONATE = new Image<Bgr, byte>("Images/donate.png");

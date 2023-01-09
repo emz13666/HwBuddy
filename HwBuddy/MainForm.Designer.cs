@@ -170,7 +170,7 @@ namespace HwBuddy
             this.zapredButton.UseVisualStyleBackColor = true;
             this.zapredButton.Click += new System.EventHandler(this.zapredButton_Click);
             // 
-            // questsButton
+            // OnTop (было: questsButton)
             // 
             this.questsButton.Location = new System.Drawing.Point(662, 27);
             this.questsButton.Name = "questsButton";
@@ -180,13 +180,13 @@ namespace HwBuddy
             this.questsButton.UseVisualStyleBackColor = true;
             this.questsButton.Click += new System.EventHandler(this.questsButton_Click);
             // 
-            // postButton
+            // F1 (было: postButton)
             // 
-            this.postButton.Location = new System.Drawing.Point(12, 56);
+            this.postButton.Location = new System.Drawing.Point(730, 27);
             this.postButton.Name = "postButton";
             this.postButton.Size = new System.Drawing.Size(62, 23);
             this.postButton.TabIndex = 14;
-            this.postButton.Text = "Почта";
+            this.postButton.Text = "F1";
             this.postButton.UseVisualStyleBackColor = true;
             this.postButton.Click += new System.EventHandler(this.postButton_Click);
             // 

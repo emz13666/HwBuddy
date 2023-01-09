@@ -118,8 +118,9 @@ namespace HwBuddy
         }
         private void postButton_Click(object sender, EventArgs e)
         {
-            currentBot = BotFactory.GetPostBot();
-            StartBot();
+            ImageService.PressF1();
+            //currentBot = BotFactory.GetPostBot();
+            //StartBot();
         }
 
         void StartBot(int delay = 400)

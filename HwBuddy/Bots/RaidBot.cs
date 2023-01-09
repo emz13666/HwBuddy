@@ -43,10 +43,9 @@ namespace HwBuddy.Bots
             TakeButton();
 
             if (Checkout() || Donate() || Level())
-            {
                 ImageService.PressEsc();
-                return;
-            }
+            if (NoEnergy())
+                ImageService.PressF1();
         }
 
         void RaidButton()
@@ -75,6 +74,12 @@ namespace HwBuddy.Bots
         {
             return ImageService.CursorToImage(Images.CHECKOUT);
         }
+
+        bool NoEnergy()
+        {
+            return ImageService.CheckImagePresent(Images.RAID_NO_ENERGY);
+        }
+
         bool Donate()
         {
             if (ImageService.CheckImagePresent(Images.DONATE))
