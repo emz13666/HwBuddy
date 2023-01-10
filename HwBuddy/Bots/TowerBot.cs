@@ -103,12 +103,11 @@ namespace HwBuddy.Bots
             {
                 ImageService.DoMouseClick();
                 System.Threading.Thread.Sleep(200);
-                if (ImageService.CursorToImage(Images.TOWER_CHANGE_SKILLS))
+                if (ImageService.CursorToImage(Images.TOWER_CHANGE_SKILLS,0,0))
                 {
                     ImageService.DoMouseClick();
+                    FinalChest = -1;
                 }
-
-                FinalChest = -1;
                 return;  
             }
             
