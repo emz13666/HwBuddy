@@ -94,6 +94,7 @@ namespace HwBuddy.Common
         public static Image<Bgr, byte> EXPEDITIONS_RED_DOT = new Image<Bgr, byte>("Images/expeditions-red-dot.png");
         public static Image<Bgr, byte> EXPEDITIONS_START = new Image<Bgr, byte>("Images/expeditions-start.png");
         public static Image<Bgr, byte> EXPEDITIONS_START_2 = new Image<Bgr, byte>("Images/expeditions-start-2.png");
+        public static Image<Bgr, byte> EXPEDITIONS_DONE = new Image<Bgr, byte>("Images/expeditions-done.png");
         public static Image<Bgr, byte> EXPEDITIONS_CLOSE = new Image<Bgr, byte>("Images/expeditions-close.png");
 
         public static Image<Bgr, byte> OUTLAND_BOSS_DOT = new Image<Bgr, byte>("Images/zapred-boss-dot.png");

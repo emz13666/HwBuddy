@@ -114,7 +114,9 @@ namespace HwBuddy
             //currentBot = BotFactory.GetQuestsBot();
             //StartBot();
             //this.Text = Convert.ToString(this.Location.X) + ' ' + Convert.ToString(this.Location.Y);
+            
             TopMost = !TopMost;
+            //ImageService.PressEsc();
         }
         private void postButton_Click(object sender, EventArgs e)
         {

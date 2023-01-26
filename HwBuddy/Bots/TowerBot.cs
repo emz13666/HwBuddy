@@ -38,6 +38,7 @@ namespace HwBuddy.Bots
             if (ImageService.CursorToImage(Images.TOWER_MOMENT,0.75f))
             {
                 ImageService.DoMouseClick();
+                System.Threading.Thread.Sleep(1500);
                 return;
             }
 
@@ -86,14 +87,14 @@ namespace HwBuddy.Bots
             if ((FinalChest < 0) && ImageService.CursorToImage(Images.TOWER_HALL))
             {
                 ImageService.DoMouseClick();
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(300);
                 if (ImageService.CursorToImage(Images.POST_COLLECT_ALL))
                 {
                     ImageService.DoMouseClick();
                 }
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(700);
                 ImageService.PressEsc();
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(700);
                 ImageService.PressEsc();
                 ImageService.PressF1();
                 return;
@@ -102,7 +103,7 @@ namespace HwBuddy.Bots
             if ((FinalChest > 0) && ImageService.CursorToImage(Images.TOWER_SKULLS_COLLECT))
             {
                 ImageService.DoMouseClick();
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(300);
                 if (ImageService.CursorToImage(Images.TOWER_CHANGE_SKILLS,0,0))
                 {
                     ImageService.DoMouseClick();
