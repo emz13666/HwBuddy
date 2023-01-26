@@ -38,13 +38,13 @@ namespace HwBuddy.Bots
             if (ImageService.CursorToImage(Images.TOWER_MOMENT,0.75f))
             {
                 ImageService.DoMouseClick();
-                System.Threading.Thread.Sleep(1500);
                 return;
             }
 
             if (ImageService.CursorToImage(Images.TOWER_CHOOSE15,0,135))
             {
                 ImageService.DoMouseClick();
+                System.Threading.Thread.Sleep(1500);
                 return;
             }
             if (ImageService.CursorToImage(Images.TOGGLE_BUTTON))
